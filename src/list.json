@@ -1,0 +1,72 @@
+[
+	{
+		"id": 0,
+		"title": "Apollo Link",
+		"link": "https://www.apollographql.com/docs/link/"
+	},
+	{
+		"id": 1,
+		"title": "React's Render Props Pattern",
+		"link": "https://www.robinwieruch.de/react-render-props-pattern/"
+	},
+	{
+		"id": 2,
+		"title": "простой GraphQL в React-клиенте",
+		"link": "https://github.com/rwieruch/react-graphql-client"
+	},
+	{
+		"id": 3,
+		"title": " Apollo Server",
+		"link": "https://github.com/apollographql/apollo-server"
+	},
+	{
+		"id": 4,
+		"title": " express-graphql",
+		"link": "https://github.com/graphql/express-graphql"
+	},
+	{
+		"id": 5,
+		"title": "graphql-yoga",
+		"link": "https://github.com/prisma/graphql-yoga"
+	},
+	{
+		"id": 6,
+		"title": "GitHub API GraphQL v4",
+		"link": "https://developer.github.com/v4/"
+	},
+	{
+		"id": 7,
+		"title": "Подробнее о запросе в GraphQL ",
+		"link": "http://graphql.org/learn/queries"
+	},
+	{
+		"id": 8,
+		"title": "Мутации в GraphQL ",
+		"link": "http://graphql.org/learn/queries/#mutations"
+	},
+	{
+		"id": 9,
+		"title": "Подробнее о схеме и типах",
+		"link": "http://graphql.org/learn/schema"
+	},
+	{
+		"id": 10,
+		"title": "Paginated List in React - создать мощный компонент (часть I)",
+		"link": "https://www.robinwieruch.de/react-paginated-list/"
+	},
+	{
+		"id": 11,
+		"title": "Бесконечный свиток в реакторе - создайте мощный компонент (часть II)",
+		"link": "https://www.robinwieruch.de/react-infinite-scroll/"
+	},
+	{
+		"id": 12,
+		"title": "GraphQL Pagination",
+		"link": "https://graphql.github.io/learn/pagination/"
+	},
+	{
+		"id": 13,
+		"title": "извлечения данных из стороннего API в React ",
+		"link": "https://www.robinwieruch.de/react-fetching-data/"
+	}
+]
