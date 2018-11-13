@@ -68,5 +68,10 @@
 		"id": 13,
 		"title": "извлечения данных из стороннего API в React ",
 		"link": "https://www.robinwieruch.de/react-fetching-data/"
+	},
+	{
+		"id": 14,
+		"title": " метод разделения JavaScript в строке ",
+		"link": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split"
 	}
 ]
