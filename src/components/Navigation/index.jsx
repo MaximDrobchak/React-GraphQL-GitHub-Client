@@ -20,6 +20,30 @@ const Navigation = ({ links }) => {
 						Apollo RESTfull
 					</a>
 				</li>
+				<li>
+					<a
+						href="https://blog.apollographql.com/full-stack-react-graphql-tutorial-582ac8d24e3b"
+						alt=""
+					>
+						Apollo Full-stak Tutorial
+					</a>
+				</li>
+				<li>
+					<a
+						href="https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html"
+						alt=""
+					>
+						Обновление асинхронного рендеринга ReactJs
+					</a>
+				</li>
+				<li>
+					<a
+						href="https://reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html"
+						alt=""
+					>
+						Подробнее о методах жизниного цикла ReactJs
+					</a>
+				</li>
 			</ul>
 		</div>
 	);

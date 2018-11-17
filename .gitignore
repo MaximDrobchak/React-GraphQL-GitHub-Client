@@ -12,7 +12,8 @@ QueryMutationPagin.graphql
 # production
 /build
 
-Tools.js
+Testing/
+
 # misc
 .DS_Store
 .env.local

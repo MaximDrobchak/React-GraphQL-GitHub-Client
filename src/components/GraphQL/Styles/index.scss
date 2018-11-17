@@ -1,0 +1,23 @@
+form {
+	margin-left: 100px;
+}
+form > input[type=text] {
+	 width: 300px; 
+}
+
+.errors {
+	font-size: 3em;
+	color: red;
+	font: bold 700;
+}
+
+a {
+	text-decoration: none;
+	font-family: 'Segoe UI' bold 500;
+	margin-left: 10px;
+	font-size: 1.2em;
+	color: blue;
+	&:hover {
+		color: tomato;
+	}
+}
