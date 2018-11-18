@@ -1,33 +1,70 @@
 import React, { Component } from 'react';
-import { axiosGitHubGraphQL } from '../Tools';
+import {
+	getIssuesOfRepository,
+	addStarToRepository,
+} from '../Tools';
 import Organization from './OrganizationRepository';
 import '../../Styles/index.scss';
 
-const getIssuesOfRepositoryQuery = (
-	organization,
-	repository
-) => `
-	{
-		organization(login: "${organization}") {
-			name
-			url
-			repository(name: "${repository}") {
-				name
-				url
-				issues(last: 5) {
-          edges {
-            node {
-              id
-              title
-              url
-            }
-          }
-        }
-			}
-		}
-	}
-`;
+const resolveAddStarMutation = mutationResult => state => {
+	const {
+		viewerHasStarred,
+	} = mutationResult.data.data.addStar.starrable;
 
+	const {
+		totalCount,
+	} = state.organization.repository.stargazers;
+
+	return {
+		...state,
+		organization: {
+			...state.organization,
+			repository: {
+				...state.organization.repository,
+				viewerHasStarred,
+				stargazers: {
+					totalCount: totalCount + 1,
+				},
+			},
+		},
+	};
+};
+
+const resolveIssuesQuery = (
+	queryResult,
+	cursor
+) => state => {
+	const { data, errors } = queryResult.data;
+
+	if (!cursor) {
+		return {
+			organization: data.organization,
+			errors,
+		};
+	}
+
+	const {
+		edges: oldIssues,
+	} = state.organization.repository.issues;
+	const {
+		edges: newIssues,
+	} = data.organization.repository.issues;
+	const updatedIssues = [...oldIssues, ...newIssues];
+
+	return {
+		organization: {
+			...data.organization,
+			repository: {
+				...data.organization.repository,
+				issues: {
+					...data.organization.repository.issues,
+					edges: updatedIssues,
+				},
+			},
+		},
+		errors,
+	};
+};
 export default class extends Component {
 	state = {
 		path: 'the-road-to-learn-react/the-road-to-learn-react',
@@ -36,36 +73,37 @@ export default class extends Component {
 	};
 
 	componentDidMount() {
-		this.input.focus();
-		this.onFetchFormGitHub(this.state.path);
+		this.onFetchFromGitHub(this.state.path);
 	}
 
-	onChange = e => {
-		this.setState({ path: e.target.value });
+	onChange = event => {
+		this.setState({ path: event.target.value });
 	};
 
-	onSubmit = e => {
-		this.onFetchFormGitHub(this.state.path);
-		e.preventDefault();
+	onSubmit = event => {
+		this.onFetchFromGitHub(this.state.path);
+
+		event.preventDefault();
 	};
 
-	onFetchFormGitHub = path => {
-		const [organization, repository] = path.split('/');
+	onFetchFromGitHub = (path, cursor) => {
+		getIssuesOfRepository(path, cursor).then(queryResult =>
+			this.setState(resolveIssuesQuery(queryResult, cursor))
+		);
+	};
 
-		axiosGitHubGraphQL
-			.post('', {
-				query: getIssuesOfRepositoryQuery(
-					organization,
-					repository
-				),
-			})
-			.then(result => {
-				console.log(result);
-				this.setState(() => ({
-					organization: result.data.data.organization,
-					errors: result.data.errors,
-				}));
-			});
+	onFetchMoreIssues = () => {
+		const {
+			endCursor,
+		} = this.state.organization.repository.issues.pageInfo;
+
+		this.onFetchFromGitHub(this.state.path, endCursor);
+	};
+
+	onStarRepository = (repositoryId, viewerHasStarred) => {
+		addStarToRepository(repositoryId).then(mutationResult =>
+			this.setState(resolveAddStarMutation(mutationResult))
+		);
 	};
 
 	render() {
@@ -85,9 +123,14 @@ export default class extends Component {
 				/>
 				<button type="submit">Search</button>
 				{organization ? (
-					<Organization organization={organization} />
+					<Organization
+						organization={organization}
+						errors={errors}
+						onFetchMoreIssues={this.onFetchMoreIssues}
+						onStarRepository={this.onStarRepository}
+					/>
 				) : (
-					<p>Ni information yet ...</p>
+					<p>No information yet ...</p>
 				)}
 				{errors && (
 					<span className="errors">{errors.message}</span>

@@ -71,7 +71,12 @@
 	},
 	{
 		"id": 14,
-		"title": " метод разделения JavaScript в строке ",
+		"title": "метод разделения JavaScript в строке ",
 		"link": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split"
+	},
+	{
+		"id": 15,
+		"title": "обслуживании API GraphQL через HTTP",
+		"link": "http://graphql.org/learn/serving-over-http/"
 	}
 ]

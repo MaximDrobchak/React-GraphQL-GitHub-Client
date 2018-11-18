@@ -1,8 +1,13 @@
 form {
-	margin-left: 100px;
+	padding-left: 1em;
 }
+form >
+	input[type=text], label{
+		margin-left: 100px;
+	}
+
 form > input[type=text] {
-	 width: 300px; 
+	  width: 300px; 
 }
 
 .errors {
