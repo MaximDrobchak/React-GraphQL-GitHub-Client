@@ -8,7 +8,7 @@
 #Installation
 	git clone https://github.com/MaximDrobchak/React-GraphQL-GitHub-Client.git
 	cd React-GraphQL-GitHub-Client
-	npm install #or yarn
+	npm install
 	add your own REACT_APP_GITHUB_PERSONAL_ACCESS_TOKEN in .env file
 	https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/
 	npm start
