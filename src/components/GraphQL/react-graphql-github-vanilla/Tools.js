@@ -6,13 +6,13 @@ const GET_ISSUES_OF_REPOSITORY = `
       name
       url
       repository(name: $repository) {
-				id
+        id
         name
-				url
-				stargazers {
-					totalCount
-				}
-				viewerHasStarred
+        url
+        stargazers {
+          totalCount
+        }
+        viewerHasStarred
         issues(first: 5, after: $cursor, states: [OPEN]) {
           edges {
             node {
@@ -38,18 +38,27 @@ const GET_ISSUES_OF_REPOSITORY = `
       }
     }
   }
-	`;
+`;
 
 const ADD_STAR = `
-	mutation ($repositoryId: ID!) {
-		addStar(input: { starrableId: $repositoryId }) {
-			starrable {
-				viewerHasStarred
-			}
-		}  
-	}
-	`;
+  mutation ($repositoryId: ID!) {
+    addStar(input:{starrableId:$repositoryId}) {
+      starrable {
+        viewerHasStarred
+      }
+    }
+  }
+`;
 
+const REMOVE_STAR = `
+  mutation ($repositoryId: ID!) {
+    removeStar(input:{starrableId:$repositoryId}) {
+      starrable {
+        viewerHasStarred
+      }
+    }
+  }
+`;
 export const getIssuesOfRepository = (path, cursor) => {
 	const [organization, repository] = path.split('/');
 
@@ -62,6 +71,12 @@ export const getIssuesOfRepository = (path, cursor) => {
 export const addStarToRepository = repositoryId =>
 	axiosGitHubGraphQL.post('', {
 		query: ADD_STAR,
+		variables: { repositoryId },
+	});
+
+export const removeStarFromRepository = repositoryId =>
+	axiosGitHubGraphQL.post('', {
+		query: REMOVE_STAR,
 		variables: { repositoryId },
 	});
 

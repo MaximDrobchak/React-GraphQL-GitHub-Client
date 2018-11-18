@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {
 	getIssuesOfRepository,
 	addStarToRepository,
+	removeStarFromRepository,
 } from '../Tools';
 import Organization from './OrganizationRepository';
 import '../../Styles/index.scss';
@@ -65,6 +66,30 @@ const resolveIssuesQuery = (
 		errors,
 	};
 };
+
+const resolveRemoveStarMutation = mutationResult => state => {
+	const {
+		viewerHasStarred,
+	} = mutationResult.data.data.removeStar.starrable;
+
+	const {
+		totalCount,
+	} = state.organization.repository.stargazers;
+
+	return {
+		...state,
+		organization: {
+			...state.organization,
+			repository: {
+				...state.organization.repository,
+				viewerHasStarred,
+				stargazers: {
+					totalCount: totalCount - 1,
+				},
+			},
+		},
+	};
+};
 export default class extends Component {
 	state = {
 		path: 'facebook/react',
@@ -101,9 +126,21 @@ export default class extends Component {
 	};
 
 	onStarRepository = (repositoryId, viewerHasStarred) => {
-		addStarToRepository(repositoryId).then(mutationResult =>
-			this.setState(resolveAddStarMutation(mutationResult))
-		);
+		if (viewerHasStarred) {
+			removeStarFromRepository(repositoryId).then(
+				mutationResult =>
+					this.setState(
+						resolveRemoveStarMutation(mutationResult)
+					)
+			);
+		} else {
+			addStarToRepository(repositoryId).then(
+				mutationResult =>
+					this.setState(
+						resolveAddStarMutation(mutationResult)
+					)
+			);
+		}
 	};
 
 	render() {
