@@ -67,7 +67,7 @@ const resolveIssuesQuery = (
 };
 export default class extends Component {
 	state = {
-		path: 'the-road-to-learn-react/the-road-to-learn-react',
+		path: 'facebook/react',
 		organization: null,
 		errors: null,
 	};
