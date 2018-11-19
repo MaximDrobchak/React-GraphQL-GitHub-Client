@@ -78,5 +78,75 @@
 		"id": 15,
 		"title": "обслуживании API GraphQL через HTTP",
 		"link": "http://graphql.org/learn/serving-over-http/"
+	},
+	{
+		"id": 16,
+		"title": "Полный ответ с учебником GraphQL",
+		"link": "https://www.robinwieruch.de/react-with-graphql-tutorial/"
+	},
+	{
+		"id": 17,
+		"title": "Node.js и его инструкции по установке ",
+		"link": "https://github.com/rwieruch/node-babel-server"
+	},
+	{
+		"id": 18,
+		"title": "DOTEVN",
+		"link": "https://github.com/motdotla/dotenv"
+	},
+	{
+		"id": 19,
+		"title": "Apollo-in-memory-cash",
+		"link": "https://github.com/apollographql/apollo-client/tree/master/packages/apollo-cache-inmemory"
+	},
+	{
+		"id": 20,
+		"title": "Подробнее о конфигурации сетевого уровня в Apollo Client",
+		"link": "https://www.apollographql.com/docs/react/advanced/network-layer.html"
+	},
+	{
+		"id": 21,
+		"title": "React-Apollo",
+		"link": "https://github.com/apollographql/react-apollo"
+	},
+	{
+		"id": 22,
+		"title": "Узнайте больше о настройке и подключении клиента Apollo для React",
+		"link": "https://www.apollographql.com/docs/react/essentials/get-started.html"
+	},
+	{
+		"id": 23,
+		"title": "Узнайте больше о запросах с Apollo Client в React",
+		"link": "https://www.apollographql.com/docs/react/essentials/queries.html"
+	},
+	{
+		"id": 24,
+		"title": "Подробнее о различных типах ошибок Apollo и политике ошибок",
+		"link": "https://www.apollographql.com/docs/react/features/error-handling.html"
+	},
+	{
+		"id": 25,
+		"title": "знайте больше об Apollo Links",
+		"link": "https://www.apollographql.com/docs/link/"
+	},
+	{
+		"id": 26,
+		"title": "Подробнее о композитных Apollo Links",
+		"link": "https://www.apollographql.com/docs/link/composition.html"
+	},
+	{
+		"id": 27,
+		"title": "Реализовать повторную попытку apollo-link в случае сбоя сетевого запроса",
+		"link": "https://www.apollographql.com/docs/link/links/retry.html"
+	},
+	{
+		"id": 28,
+		"title": "Обзор концепций apollo-link",
+		"link": "https://www.apollographql.com/docs/link/overview.html"
+	},
+	{
+		"id": 29,
+		"title": "Подробнее о мутациях с клиентом Apollo в реактиве",
+		"link": "https://www.apollographql.com/docs/react/essentials/mutations.html"
 	}
 ]

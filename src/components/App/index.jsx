@@ -1,33 +1,38 @@
 import React, { Component } from 'react';
 
-import {
-	BrowserRouter as Router,
-	Route,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import { VanilaGraphQL } from '../GraphQL';
+import VanilaGraphQL from '../Vanilla-Client-GitHubAPIv4-GraphQL';
+import ApolloClientGithubGraphQL from '../ApolloClientGithubGraphQL/index.jsx';
 import Navigation from '../Navigation';
 
 const LINKS = [
-	{ label: 'React-GraphQL-GitHub-Vanilla', to: '/' },
+	{ label: 'Apollo-Client-Github-GraphQL', to: '/' },
+	{
+		label: 'React-GraphQL-GitHub-Vanilla',
+		to: '/graphqlvanilla',
+	},
 ];
 
 class App extends Component {
 	render() {
 		return (
-			<div>
-				<Navigation links={LINKS} />
+			<Router>
+				<div>
+					<Navigation links={LINKS} />
 
-				<Router>
-					<div>
-						<Route
-							exact
-							path="/"
-							component={VanilaGraphQL}
-						/>
-					</div>
-				</Router>
-			</div>
+					<Route
+						exact
+						path="/"
+						component={ApolloClientGithubGraphQL}
+					/>
+					<Route
+						exact
+						path="/graphqlvanilla"
+						component={VanilaGraphQL}
+					/>
+				</div>
+			</Router>
 		);
 	}
 }

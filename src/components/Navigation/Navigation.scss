@@ -28,3 +28,10 @@
     color: $primary-color;
   }
 }
+
+.task-list {
+	align-content: flex-end;
+	width: 250px;
+	display: flex;
+	flex-direction: column;
+}

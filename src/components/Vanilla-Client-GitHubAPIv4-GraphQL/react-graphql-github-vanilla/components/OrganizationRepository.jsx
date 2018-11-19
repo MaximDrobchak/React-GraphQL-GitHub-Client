@@ -49,10 +49,9 @@ const Repository = ({
 				)
 			}
 		>
-			{repository.stargazers.totalCount}
 			{repository.viewerHasStarred ? ' Unstar' : ' Star'}
 		</button>
-
+		<span>{repository.stargazers.totalCount}</span>
 		<ul>
 			{repository.issues.edges.map(issue => (
 				<li key={issue.node.id}>
