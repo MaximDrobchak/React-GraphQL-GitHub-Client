@@ -1,5 +1,6 @@
 import React from 'react';
 import { Mutation } from 'react-apollo';
+import { graphql } from 'react-apollo';
 
 import Link from '../../Link';
 import Button from '../../Button';
@@ -12,9 +13,45 @@ import {
 	WATCH_REPOSITORY,
 } from '../mutations';
 
+import REPOSITORY_FRAGMENT from '../fragments';
+import Repository from './../../../../TestingComponent/TestingApollo/Repository';
+
 const VIEWER_SUBSCRIPTIONS = {
 	SUBSCRIBED: 'SUBSCRIBED',
 	UNSUBSCRIBED: 'UNSUBSCRIBED',
+};
+
+const updateAddStar = (
+	client,
+	{
+		data: {
+			addStar: {
+				starrable: { id },
+			},
+		},
+	},
+	mutationResult,
+) => {
+	const repository = client.readFragment({
+		id: `Repository:${id}`,
+		fragment: REPOSITORY_FRAGMENT,
+	});
+
+	// update count of stargazers of repository
+	const totalCount = repository.stargazers.totalCount + 1;
+
+	// write repository back to cache
+	client.writeFragment({
+		id: `Repository:${id}`,
+		fragment: REPOSITORY_FRAGMENT,
+		data: {
+			...repository,
+			stargazers: {
+				...repository.stargazers,
+				totalCount,
+			},
+		},
+	});
 };
 
 const isWatch = viewerSubscription =>
@@ -61,7 +98,11 @@ const RepositoryItem = ({
 				</Mutation>
 
 				{!viewerHasStarred ? (
-					<Mutation mutation={STAR_REPOSITORY} variables={{ id }}>
+					<Mutation
+						mutation={STAR_REPOSITORY}
+						variables={{ id }}
+						update={updateAddStar}
+					>
 						{(addStar, { data, loading, error }) => (
 							<Button
 								className={'RepositoryItem-title-action'}
@@ -111,4 +152,4 @@ const RepositoryItem = ({
 	</div>
 );
 
-export default RepositoryItem;
+export default graphql(WATCH_REPOSITORY)(RepositoryItem);

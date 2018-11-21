@@ -6,6 +6,7 @@ import { BrowserRouter } from 'react-router-dom';
 import './index.scss';
 import * as serviceWorker from './serviceWorker';
 import App from './components/App';
+// import App from './components/TestingComponent';
 
 import { HttpLink } from 'apollo-link-http';
 import { ApolloClient } from 'apollo-client';

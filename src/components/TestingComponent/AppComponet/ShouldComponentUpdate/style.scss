@@ -1,0 +1,27 @@
+.crypto-table > tbody > tr > td > img {
+	max-width: 75px;
+	max-height: 75px;
+}
+.crypto-table > tbody > tr > td {
+	background: pink;
+
+}
+
+
+
+#modal-root {
+  position: relative;
+  z-index: 999;
+}
+
+.modal {
+  background-color: rgba(0,0,0,0.5);
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
