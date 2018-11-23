@@ -148,5 +148,25 @@
 		"id": 29,
 		"title": "Подробнее о мутациях с клиентом Apollo в реактиве",
 		"link": "https://www.apollographql.com/docs/react/essentials/mutations.html"
+	},
+	{
+		"id": 30,
+		"title": "Local state management",
+		"link": "https://www.apollographql.com/docs/react/essentials/local-state.html"
+	},
+	{
+		"id": 31,
+		"title": "apollo-link-state",
+		"link": "https://www.apollographql.com/docs/link/links/state.html"
+	},
+	{
+		"id": 32,
+		"title": "Подробнее о фрагментах в Apollo Client",
+		"link": "https://www.apollographql.com/docs/react/advanced/fragments.html"
+	},
+	{
+		"id": 33,
+		"title": "Подробнее о кэшировании в Apollo Client и составном ключе для идентификации объектов",
+		"link": "https://www.apollographql.com/docs/react/advanced/caching.html"
 	}
 ]

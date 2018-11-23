@@ -40,6 +40,15 @@ export default class extends Component {
 								</li>
 								<li>
 									<a
+										href="https://blog.apollographql.com/the-future-of-state-management-dd410864cae2?_ga=2.17183419.38525258.1542947660-1174628931.1542675938"
+										alt=""
+									>
+										Аполло Универсальный GraphQL сохранение состояния Apollo-link-state Полная автономия
+									</a>
+									<a href="https://www.apollographql.com/docs/link/links/state.html" alt="">Подробней о Аполло состояние</a>
+								</li>
+								<li>
+									<a
 										href="https://blog.apollographql.com/full-stack-react-graphql-tutorial-582ac8d24e3b"
 										alt=""
 									>

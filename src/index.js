@@ -44,11 +44,14 @@ const httpLink = new HttpLink({
 // Обеденим error & http Links в масив чтобы передать их как аргумент
 const link = ApolloLink.from([errorLink, httpLink]);
 
-const cache = new InMemoryCache(); //  Кэш нормализует ваши данные, кэширует запросы
+const cache = new InMemoryCache({
+	dataIdFromObject: object => object.key || null
+}); //  Кэш нормализует ваши данные, кэширует запросы
 
 const client = new ApolloClient({
 	link,
 	cache,
+	clientState: {}
 }); // используем созданые рание настройки для реализации Apollo Client
 
 ReactDOM.render(
