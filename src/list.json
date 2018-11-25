@@ -168,5 +168,10 @@
 		"id": 33,
 		"title": "Подробнее о кэшировании в Apollo Client и составном ключе для идентификации объектов",
 		"link": "https://www.apollographql.com/docs/react/advanced/caching.html"
+	},
+	{
+		"id": 34,
+		"title": "Подробнее о разбиении на страницы с клиентом Apollo в React",
+		"link": "https://www.apollographql.com/docs/react/features/pagination.html"
 	}
 ]

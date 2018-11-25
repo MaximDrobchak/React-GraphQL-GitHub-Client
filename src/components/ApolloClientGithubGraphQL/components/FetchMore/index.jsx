@@ -1,9 +1,27 @@
 import React from 'react';
+import Loading from '../Loading';
+import {ButtonUnobtrusive} from '../Button';
 
-const FetchMore = () => (
-	<div className="fetch-more">
-		Dummy stateless component: ApolloClient
-	</div>
+import './style.scss';
+const FetchMore = ({
+  loading,
+  hasNextPage,
+  variables,
+  updateQuery,
+  fetchMore,
+  children,
+}) => (
+  <div className="FetchMore">
+    {loading
+      ? <Loading />
+      : hasNextPage &&
+          <ButtonUnobtrusive
+            className="FetchMore-button"
+            onClick={() => fetchMore ({variables, updateQuery})}
+          >
+            More {children}
+          </ButtonUnobtrusive>}
+  </div>
 );
 
 export default FetchMore;
